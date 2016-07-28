@@ -1,0 +1,4 @@
+services:
+#    lsb_app.example:
+#        class: LSB\AppBundle\Example
+#        arguments: ["@service_id", "plain_value", %parameter%]

@@ -1,0 +1,7 @@
+lsb_app_homepage:
+    path:     /
+    defaults: { _controller: LSBAppBundle:App:index }
+
+lsb_app_admin:
+    path:     /admin
+    defaults: { _controller: LSBAppBundle:Admin:index }

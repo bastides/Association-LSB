@@ -1,0 +1,8 @@
+lsb_app:
+    resource: "@LSBAppBundle/Resources/config/routing.yml"
+    prefix:   /
+
+lsb_user:
+    resource: "@LSBUserBundle/Resources/config/routing.yml"
+    prefix:   /
+
