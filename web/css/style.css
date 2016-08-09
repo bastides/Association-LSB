@@ -1,0 +1,8 @@
+/* ------------------ ADMIN AREA ------------------ */
+#users-table tbody tr td {
+    border-top: none;
+}
+
+.icon-management {
+    padding: 0 10px;
+}

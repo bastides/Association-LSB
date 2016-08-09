@@ -16,7 +16,7 @@ class AdminController extends Controller
     {
         $adminList = array();
         $memberList = array();
-        $userList = array();
+        $visitorList = array();
 
         $userManager = $this->get('fos_user.user_manager');
         $usersList = $userManager->findUsers();
@@ -26,15 +26,15 @@ class AdminController extends Controller
                 array_push($adminList, $user);
             } elseif ($user->hasRole('ROLE_MEMBER')) {
                 array_push($memberList, $user);
-            } elseif ($user->hasRole('ROLE_USER')) {
-                array_push($userList, $user);
+            } elseif ($user->hasRole('ROLE_VISITOR')) {
+                array_push($visitorList, $user);
             }
         }
 
         return $this->render('LSBAppBundle:Admin:userManagement.html.twig', array(
             'adminList' => $adminList,
             'memberList' => $memberList,
-            'userList' => $userList
+            'visitorList' => $visitorList
         ));
     }
 

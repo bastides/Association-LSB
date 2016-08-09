@@ -5,7 +5,6 @@
 {% block title %} Liste des utilisateurs {% endblock %}
 
 {% block container %}
-    <h3>Liste des utilisateurs</h3>
 
     {% for flash_message in app.session.flashBag.get('info') %}
         <div class="flash-notice">
@@ -13,44 +12,48 @@
         </div>
     {% endfor %}
 
-    <ul class="list-group">
-        {% for user in adminList %}
-            <li>
-                Admin | {{ user.username }} | {{ user.email }} |
-                {% if is_granted("ROLE_SUPER_ADMIN") %}
-                    <a href="{{ path('lsb_app_user_delete', {'id' : user.id}) }}">Supprimer</a>
-                {% endif %}
-                <a href="{{ path('lsb_app_user_promote', {'id' : user.id}) }}">Promouvoir</a>
-                <a href="{{ path('lsb_app_user_demote', {'id' : user.id}) }}">Rétrograder</a>
-            </li>
-        {% else %}
-            <li>Aucun admin n'a été trouvé.</li>
-        {% endfor %}
-    </ul>
+    <table class="table table-hover" id="users-table">
+        <tbody>
+            {% for user in adminList %}
+                <tr>
+                    <td class="col-sm-2"><i class="fa fa-star" aria-hidden="true"></i> {{ user.username }}</td>
+                    <td class="col-sm-3"> {{ user.email }} </td>
+                    <td>
+                        <a class="icon-management" href="{{ path('lsb_app_user_delete', {'id' : user.id}) }}"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                        <a class="icon-management" href="{{ path('lsb_app_user_demote', {'id' : user.id}) }}"><i class="fa fa-chevron-down" aria-hidden="true"></i></a>
+                    </td>
+                </tr>
+            {% else %}
+                <li>Aucun admin n'a été trouvé.</li>
+            {% endfor %}
 
-    <ul class="list-group">
-        {% for user in memberList %}
-            <li>
-                Membre | {{ user.username }} | {{ user.email }} |
-                <a href="{{ path('lsb_app_user_delete', {'id' : user.id}) }}">Supprimer</a>
-                <a href="{{ path('lsb_app_user_promote', {'id' : user.id}) }}">Promouvoir</a>
-                <a href="{{ path('lsb_app_user_demote', {'id' : user.id}) }}">Rétrograder</a>
-            </li>
-        {% else %}
-            <li>Aucun naturaliste n'a été trouvé.</li>
-        {% endfor %}
-    </ul>
+            {% for user in memberList %}
+                <tr>
+                    <td class="col-sm-2"><i class="fa fa-shield" aria-hidden="true"></i> {{ user.username }}</td>
+                    <td class="col-sm-3">{{ user.email }}</td>
+                    <td>
+                        <a class="icon-management" href="{{ path('lsb_app_user_delete', {'id' : user.id}) }}"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                        <a class="icon-management" href="{{ path('lsb_app_user_promote', {'id' : user.id}) }}"><i class="fa fa-chevron-up" aria-hidden="true"></i></a>
+                        <a class="icon-management" href="{{ path('lsb_app_user_demote', {'id' : user.id}) }}"><i class="fa fa-chevron-down" aria-hidden="true"></i></a>
+                    </td>
+                </tr>
+            {% else %}
+                <li>Aucun admin n'a été trouvé.</li>
+            {% endfor %}
 
-    <ul class="list-group">
-        {% for user in userList %}
-            <li>
-                Utilisateur | {{ user.username }} | {{ user.email }} |
-                <a href="{{ path('lsb_app_user_delete', {'id' : user.id}) }}">Supprimer</a>
-                <a href="{{ path('lsb_app_user_promote', {'id' : user.id}) }}">Promouvoir</a>
-                <a href="{{ path('lsb_app_user_demote', {'id' : user.id}) }}">Rétrograder</a>
-            </li>
-        {% else %}
-            <li>Aucun observateur n'a été trouvé.</li>
-        {% endfor %}
-    </ul>
+            {% for user in visitorList %}
+                <tr>
+                    <td class="col-sm-2"><i class="fa fa-user" aria-hidden="true"></i> {{ user.username }}</td>
+                    <td class="col-sm-3">{{ user.email }}</td>
+                    <td>
+                        <a class="icon-management" href="{{ path('lsb_app_user_delete', {'id' : user.id}) }}"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                        <a class="icon-management" href="{{ path('lsb_app_user_promote', {'id' : user.id}) }}"><i class="fa fa-chevron-up" aria-hidden="true"></i></a>
+                    </td>
+                </tr>
+            {% else %}
+                <li>Aucun visiteur n'a été trouvé.</li>
+            {% endfor %}
+        </tbody>
+    </table>
+
 {% endblock %}

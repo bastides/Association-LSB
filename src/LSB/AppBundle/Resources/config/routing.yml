@@ -2,6 +2,12 @@ lsb_app_homepage:
     path:     /
     defaults: { _controller: LSBAppBundle:App:index }
 
+lsb_app_lobby:
+    path:     /{timestamp}
+    defaults: { _controller: LSBAppBundle:App:lobby }
+    requirements:
+        timestamp: \d+
+
 lsb_app_adminpage:
     path:     /admin
     defaults: { _controller: LSBAppBundle:Admin:index }
