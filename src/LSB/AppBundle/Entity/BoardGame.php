@@ -22,18 +22,18 @@ class BoardGame
     private $id;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string")
+     */
+    private $name;
+
+    /**
      * @var int
      *
      * @ORM\Column(name="players", type="integer")
      */
     private $players;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="mode", type="string", length=255)
-     */
-    private $mode;
 
     /**
      * @ORM\ManyToOne(targetEntity="LSB\AppBundle\Entity\MeetingDate")
@@ -45,6 +45,11 @@ class BoardGame
      * @ORM\ManyToMany(targetEntity="LSB\UserBundle\Entity\User", cascade={"persist"})
      */
     private $users;
+
+    /**
+     * @ORM\OneToOne(targetEntity="LSB\UserBundle\Entity\User", cascade={"persist"})
+     */
+    private $creator;
 
 
     /**
@@ -168,5 +173,53 @@ class BoardGame
     public function getUsers()
     {
         return $this->users;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     *
+     * @return BoardGame
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set creator
+     *
+     * @param \LSB\UserBundle\Entity\User $creator
+     *
+     * @return BoardGame
+     */
+    public function setCreator(\LSB\UserBundle\Entity\User $creator = null)
+    {
+        $this->creator = $creator;
+
+        return $this;
+    }
+
+    /**
+     * Get creator
+     *
+     * @return \LSB\UserBundle\Entity\User
+     */
+    public function getCreator()
+    {
+        return $this->creator;
     }
 }

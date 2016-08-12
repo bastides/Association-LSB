@@ -22,6 +22,13 @@ class Warhammer40k
     private $id;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string")
+     */
+    private $name;
+
+    /**
      * @var int
      *
      * @ORM\Column(name="players", type="integer")
@@ -60,6 +67,10 @@ class Warhammer40k
      */
     private $users;
 
+    /**
+     * @ORM\OneToOne(targetEntity="LSB\UserBundle\Entity\User", cascade={"persist"})
+     */
+    private $creator;
 
     /**
      * Get id
@@ -230,5 +241,53 @@ class Warhammer40k
     public function getUsers()
     {
         return $this->users;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     *
+     * @return Warhammer40k
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set creator
+     *
+     * @param \LSB\UserBundle\Entity\User $creator
+     *
+     * @return Warhammer40k
+     */
+    public function setCreator(\LSB\UserBundle\Entity\User $creator = null)
+    {
+        $this->creator = $creator;
+
+        return $this;
+    }
+
+    /**
+     * Get creator
+     *
+     * @return \LSB\UserBundle\Entity\User
+     */
+    public function getCreator()
+    {
+        return $this->creator;
     }
 }

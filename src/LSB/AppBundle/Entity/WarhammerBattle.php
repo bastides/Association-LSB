@@ -22,6 +22,13 @@ class WarhammerBattle
     private $id;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string")
+     */
+    private $name;
+
+    /**
      * @var int
      *
      * @ORM\Column(name="players", type="integer")
@@ -59,6 +66,11 @@ class WarhammerBattle
      * @ORM\ManyToMany(targetEntity="LSB\UserBundle\Entity\User", cascade={"persist"})
      */
     private $users;
+
+    /**
+     * @ORM\OneToOne(targetEntity="LSB\UserBundle\Entity\User", cascade={"persist"})
+     */
+    private $creator;
 
 
     /**
@@ -230,5 +242,53 @@ class WarhammerBattle
     public function getUsers()
     {
         return $this->users;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     *
+     * @return WarhammerBattle
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set creator
+     *
+     * @param \LSB\UserBundle\Entity\User $creator
+     *
+     * @return WarhammerBattle
+     */
+    public function setCreator(\LSB\UserBundle\Entity\User $creator = null)
+    {
+        $this->creator = $creator;
+
+        return $this;
+    }
+
+    /**
+     * Get creator
+     *
+     * @return \LSB\UserBundle\Entity\User
+     */
+    public function getCreator()
+    {
+        return $this->creator;
     }
 }

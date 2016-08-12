@@ -5,8 +5,76 @@
 {% block stylesheets %} {{ parent() }} {% endblock %}
 
 {% block body %}
-    <h1>LOBBY PAGE</h1>
+    <h1>Liste des parties</h1>
 
+    <ul>
+        {% for warhammer40k in warhammer40ks %}
+            <li>{{ warhammer40k.name }}</li>
+            <li>{{ warhammer40k.players }}</li>
+            <li>{{ warhammer40k.style }}</li>
+            <li>{{ warhammer40k.armyPoints }}</li>
+            <li>{{ warhammer40k.cpmPoints }}</li>
+
+            {% if  user in warhammer40k.users and user != warhammer40k.creator %}
+                <a href="{{ path('lsb_app_leave_warhammer40k', {'timestamp': timestamp, 'id': warhammer40k.id}) }}">Retirer</a>
+            {% elseif user == warhammer40k.creator %}
+                <a href="{{ path('lsb_app_delete_warhammer40k', {'timestamp': timestamp, 'id': warhammer40k.id}) }}">Supprimer le jeu</a>
+            {% else %}
+                <a href="{{ path('lsb_app_join_warhammer40k', {'timestamp': timestamp, 'id': warhammer40k.id}) }}">Rejoindre</a>
+            {% endif %}
+
+            {% for user in warhammer40k.users %}
+                <li>{{ user.username }}</li>
+            {% endfor %}
+        {% endfor %}
+    </ul>
+
+    <ul>
+        {% for warhammerBattle in warhammerBattles %}
+            <li>{{ warhammerBattle.name }}</li>
+            <li>{{ warhammerBattle.players }}</li>
+            <li>{{ warhammerBattle.style }}</li>
+            <li>{{ warhammerBattle.mode }}</li>
+            <li>{{ warhammerBattle.armyPoints }}</li>
+
+            {% if  user in warhammerBattle.users and user != warhammerBattle.creator %}
+                <a href="{{ path('lsb_app_leave_warhammerbattle', {'timestamp': timestamp, 'id': warhammerBattle.id}) }}">Retirer</a>
+            {% elseif user == warhammerBattle.creator %}
+                <a href="{{ path('lsb_app_delete_warhammerbattle', {'timestamp': timestamp, 'id': warhammerBattle.id}) }}">Supprimer le jeu</a>
+            {% else %}
+                <a href="{{ path('lsb_app_join_warhammerbattle', {'timestamp': timestamp, 'id': warhammerBattle.id}) }}">Rejoindre</a>
+            {% endif %}
+
+            {% for user in warhammerBattle.users %}
+                <li>{{ user.username }}</li>
+            {% endfor %}
+        {% endfor %}
+    </ul>
+
+    <ul>
+        {% for boardGame in boardGames %}
+            <li>{{ boardGame.name }}</li>
+            <li>{{ boardGame.players }}</li>
+
+            {% if  user in boardGame.users and user != boardGame.creator %}
+                <a href="{{ path('lsb_app_leave_boardgame', {'timestamp': timestamp, 'id': boardGame.id}) }}">Retirer</a>
+            {% elseif user == boardGame.creator %}
+                <a href="{{ path('lsb_app_delete_boardgame', {'timestamp': timestamp, 'id': boardGame.id}) }}">Supprimer le jeu</a>
+            {% else %}
+                <a href="{{ path('lsb_app_join_boardgame', {'timestamp': timestamp, 'id': boardGame.id}) }}">Rejoindre</a>
+            {% endif %}
+
+            {% for user in boardGame.users %}
+                <li>{{ user.username }}</li>
+            {% endfor %}
+        {% endfor %}
+    </ul>
+
+    <h2>Créer une partie</h2>
+
+    <a href="{{ path('lsb_app_creation_warhammer40k', {'timestamp': timestamp}) }}">Warhammer 40K</a>
+    <a href="{{ path('lsb_app_creation_warhammerbattle', {'timestamp': timestamp}) }}">Warhammer Battle</a>
+    <a href="{{ path('lsb_app_creation_boardgame', {'timestamp': timestamp}) }}">Jeu de plateau</a>
 {% endblock %}
 
 {% block javascripts %} {{ parent() }} {% endblock %}

@@ -1,0 +1,15 @@
+{% extends "LSBAppBundle::layout.html.twig" %}
+
+{% block title %} {{ parent() }} {% endblock %}
+
+{% block stylesheets %} {{ parent() }} {% endblock %}
+
+{% block body %}
+    <h1>Warhammer40K</h1>
+
+    {{ form_start(formW40k) }}
+
+    {{ form_end(formW40k) }}
+{% endblock %}
+
+{% block javascripts %} {{ parent() }} {% endblock %}

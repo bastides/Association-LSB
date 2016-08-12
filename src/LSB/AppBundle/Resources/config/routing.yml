@@ -3,10 +3,91 @@ lsb_app_homepage:
     defaults: { _controller: LSBAppBundle:App:index }
 
 lsb_app_lobby:
-    path:     /{timestamp}
+    path:     /salon/{timestamp}
     defaults: { _controller: LSBAppBundle:App:lobby }
     requirements:
         timestamp: \d+
+
+lsb_app_creation_warhammer40k:
+    path:     /warhammer-40k/{timestamp}
+    defaults: { _controller: LSBAppBundle:App:warhammer40kCreation }
+    requirements:
+        timestamp: \d+
+
+lsb_app_creation_warhammerbattle:
+    path:     /warhammer-battle/{timestamp}
+    defaults: { _controller: LSBAppBundle:App:warhammerbattleCreation }
+    requirements:
+        timestamp: \d+
+
+lsb_app_creation_boardgame:
+    path:     /jeu-de-plateau/{timestamp}
+    defaults: { _controller: LSBAppBundle:App:boardgameCreation }
+    requirements:
+        timestamp: \d+
+
+lsb_app_join_warhammer40k:
+    path: /join-warhammer40k/{timestamp}{id}
+    defaults: { _controller: LSBAppBundle:App:joinWarhammer40k }
+    requirements:
+        timestamp:  \d+
+        id:         \d+
+
+lsb_app_leave_warhammer40k:
+    path: /leave-warhammer40k/{timestamp}{id}
+    defaults: { _controller: LSBAppBundle:App:leaveWarhammer40k }
+    requirements:
+        timestamp:  \d+
+        id:         \d+
+
+lsb_app_delete_warhammer40k:
+    path: /delete-warhammer40k/{timestamp}{id}
+    defaults: { _controller: LSBAppBundle:App:deleteWarhammer40k }
+    requirements:
+        timestamp:  \d+
+        id:         \d+
+
+lsb_app_join_warhammerbattle:
+    path: /join-warhammerbattle/{timestamp}{id}
+    defaults: { _controller: LSBAppBundle:App:joinWarhammerbattle }
+    requirements:
+        timestamp:  \d+
+        id:         \d+
+
+lsb_app_leave_warhammerbattle:
+    path: /leave-warhammerbattle/{timestamp}{id}
+    defaults: { _controller: LSBAppBundle:App:leaveWarhammerbattle }
+    requirements:
+        timestamp:  \d+
+        id:         \d+
+
+lsb_app_delete_warhammerbattle:
+    path: /delete-warhammerbattle/{timestamp}{id}
+    defaults: { _controller: LSBAppBundle:App:deleteWarhammerbattle }
+    requirements:
+        timestamp:  \d+
+        id:         \d+
+
+lsb_app_join_boardgame:
+    path: /join-boardgame/{timestamp}{id}
+    defaults: { _controller: LSBAppBundle:App:joinBoardgame }
+    requirements:
+        timestamp:  \d+
+        id:         \d+
+
+lsb_app_leave_boardgame:
+    path: /leave-boardgame/{timestamp}{id}
+    defaults: { _controller: LSBAppBundle:App:leaveBoardgame }
+    requirements:
+        timestamp:  \d+
+        id:         \d+
+
+lsb_app_delete_boardgame:
+    path: /delete-boardgame/{timestamp}{id}
+    defaults: { _controller: LSBAppBundle:App:deleteBoardgame }
+    requirements:
+        timestamp:  \d+
+        id:         \d+
 
 lsb_app_adminpage:
     path:     /admin
