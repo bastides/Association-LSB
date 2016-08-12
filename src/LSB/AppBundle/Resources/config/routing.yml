@@ -28,63 +28,63 @@ lsb_app_creation_boardgame:
 
 lsb_app_join_warhammer40k:
     path: /join-warhammer40k/{timestamp}{id}
-    defaults: { _controller: LSBAppBundle:App:joinWarhammer40k }
+    defaults: { _controller: LSBAppBundle:ManagementGame:joinWarhammer40k }
     requirements:
         timestamp:  \d+
         id:         \d+
 
 lsb_app_leave_warhammer40k:
     path: /leave-warhammer40k/{timestamp}{id}
-    defaults: { _controller: LSBAppBundle:App:leaveWarhammer40k }
+    defaults: { _controller: LSBAppBundle:ManagementGame:leaveWarhammer40k }
     requirements:
         timestamp:  \d+
         id:         \d+
 
 lsb_app_delete_warhammer40k:
     path: /delete-warhammer40k/{timestamp}{id}
-    defaults: { _controller: LSBAppBundle:App:deleteWarhammer40k }
+    defaults: { _controller: LSBAppBundle:ManagementGame:deleteWarhammer40k }
     requirements:
         timestamp:  \d+
         id:         \d+
 
 lsb_app_join_warhammerbattle:
     path: /join-warhammerbattle/{timestamp}{id}
-    defaults: { _controller: LSBAppBundle:App:joinWarhammerbattle }
+    defaults: { _controller: LSBAppBundle:ManagementGame:joinWarhammerbattle }
     requirements:
         timestamp:  \d+
         id:         \d+
 
 lsb_app_leave_warhammerbattle:
     path: /leave-warhammerbattle/{timestamp}{id}
-    defaults: { _controller: LSBAppBundle:App:leaveWarhammerbattle }
+    defaults: { _controller: LSBAppBundle:ManagementGame:leaveWarhammerbattle }
     requirements:
         timestamp:  \d+
         id:         \d+
 
 lsb_app_delete_warhammerbattle:
     path: /delete-warhammerbattle/{timestamp}{id}
-    defaults: { _controller: LSBAppBundle:App:deleteWarhammerbattle }
+    defaults: { _controller: LSBAppBundle:ManagementGame:deleteWarhammerbattle }
     requirements:
         timestamp:  \d+
         id:         \d+
 
 lsb_app_join_boardgame:
     path: /join-boardgame/{timestamp}{id}
-    defaults: { _controller: LSBAppBundle:App:joinBoardgame }
+    defaults: { _controller: LSBAppBundle:ManagementGame:joinBoardgame }
     requirements:
         timestamp:  \d+
         id:         \d+
 
 lsb_app_leave_boardgame:
     path: /leave-boardgame/{timestamp}{id}
-    defaults: { _controller: LSBAppBundle:App:leaveBoardgame }
+    defaults: { _controller: LSBAppBundle:ManagementGame:leaveBoardgame }
     requirements:
         timestamp:  \d+
         id:         \d+
 
 lsb_app_delete_boardgame:
     path: /delete-boardgame/{timestamp}{id}
-    defaults: { _controller: LSBAppBundle:App:deleteBoardgame }
+    defaults: { _controller: LSBAppBundle:ManagementGame:deleteBoardgame }
     requirements:
         timestamp:  \d+
         id:         \d+
