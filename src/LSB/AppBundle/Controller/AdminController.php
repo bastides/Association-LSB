@@ -9,7 +9,7 @@ class AdminController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('LSBAppBundle:Admin:index.html.twig');
+        return $this->render('LSBAppBundle:Admin:home.html.twig');
     }
 
     public function userManagementAction()
@@ -59,8 +59,8 @@ class AdminController extends Controller
             $user->addRole('ROLE_ADMIN');
             $userManager->updateUser($user);
             $this->addFlash('info', 'L\'utilisateur ' . $user->getUsername() . ' est promu admin.');
-        } elseif ($user->hasRole('ROLE_USER')) {
-            $user->removeRole('ROLE_USER');
+        } elseif ($user->hasRole('ROLE_VISITOR')) {
+            $user->removeRole('ROLE_VISITOR');
             $user->addRole('ROLE_MEMBER');
             $userManager->updateUser($user);
             $this->addFlash('info', 'L\'utilisateur ' . $user->getUsername() . ' est promu membre.');
@@ -82,10 +82,10 @@ class AdminController extends Controller
             $this->addFlash('info', 'L\'utilisateur ' . $user->getUsername() . ' est rétrogradé membre.');
         } elseif ($user->hasRole('ROLE_MEMBER')) {
             $user->removeRole('ROLE_MEMBER');
-            $user->addRole('ROLE_USER');
+            $user->addRole('ROLE_VISITOR');
             $userManager->updateUser($user);
             $this->addFlash('info', 'L\'utilisateur ' . $user->getUsername() . ' est rétrogradé utilisateur.');
-        } elseif ($user->hasRole('ROLE_USER')) {
+        } elseif ($user->hasRole('ROLE_VISITOR')) {
             $this->addFlash('info', 'L\'utilisateur ' . $user->getUsername() . ' est déjà au grade minimum.');
         } else {
             $this->addFlash('info', 'L\'utilisateur ' . $user->getUsername() . ' n\'a pas un rôle valide.');

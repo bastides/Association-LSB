@@ -1,8 +1,173 @@
+body {
+    font-family: Roboto, Arial, serif;
+    color: #17141f;
+    background-color: #17141f;
+}
+
+.return-button {
+    margin-top: 20px;
+}
+
 /* ------------------ ADMIN AREA ------------------ */
+#admin-page {
+    background-color: white;
+}
+
+.navbar {
+    margin-bottom: 0;
+    font-size: 16px;
+}
+
+#userManagement-page {
+    padding-top: 20px;
+}
+
 #users-table tbody tr td {
     border-top: none;
 }
 
 .icon-management {
+    padding: 0 5px;
+}
+
+/* ------------------ HOME AREA ------------------ */
+
+
+/* ------------------ LOBBY AREA ------------------ */
+#home-page, #lobby-page, #warhammer40k-page, #warhammerBattle-page, #boardGame-page, #adminHome-page, #userManagement-page {
+    background-color: white;
+    min-height: 100vh;
+}
+
+#list-game-title {
+    font-weight: 900;
+    font-size: 30px;
+    margin-bottom: 50px;
+    border-bottom: 1px solid #d0d0d0;
+}
+
+#list-game-area {
+    font-weight: 900;
+}
+
+.padding-game {
     padding: 0 10px;
+}
+
+.game {
+    padding: 0;
+    border-radius: 5px;
+    margin-bottom: 40px;
+}
+
+.game-name {
+    padding: 10px;
+    color: #6441a4;
+    font-size: 16px;
+    line-height: 16px;
+    border-bottom: 1px solid #d0d0d0;
+}
+
+.game-name p {
+    margin-bottom: 0;
+}
+
+.game-type {
+    font-weight: 400;
+    color: #17141f;
+}
+
+.game-content {
+    padding-top: 10px;
+    border-bottom: 1px solid #d0d0d0;
+}
+
+.management-game-button {
+    font-weight: 400;
+    background-color: #6441a4;
+    color: white;
+    padding: 5px 10px;
+    margin-top: 10px;
+}
+
+.management-game-button:hover {
+    background-color: #7d5bbe;
+    color: white;
+    text-decoration: none;
+    transition: 0.4s;
+}
+
+#create-game-area {
+    margin-bottom: 40px;
+}
+
+.hr-bottom {
+    border-bottom: 1px solid #d0d0d0;
+}
+
+#create-game-title h2 {
+    font-weight: 900;
+}
+
+.align-shield {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.shield-icon-left {
+    position: relative;
+    top: 24px;
+    right: 20px;
+ }
+
+.shield-icon-right {
+    position: relative;
+    top: 24px;
+    left: 20px;
+}
+
+#create-button-area {
+    font-weight: 900;
+    margin-top: 50px;
+}
+
+#button-40k, #button-battle, #button-boardgame {
+    border: 2px solid #6441a4;
+    background-color: white;
+    color: #6441a4;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+#button-40k:hover, #button-battle:hover, #button-boardgame:hover {
+    background-color: #6441a4;
+    color: white;
+    text-decoration: none;
+    transition: 0.4s;
+}
+
+
+/* ------------------ FORM AREA ------------------ */
+#form40k, #formBattle, #formBG {
+    margin-top: 50px;
+}
+
+.creation-game-title {
+    font-weight: 900;
+    font-size: 30px;
+}
+
+.form-button {
+    border: 1px solid #6441a4;
+    font-weight: 400;
+    background-color: #6441a4;
+    color: white;
+    padding: 5px 10px;
+    margin-top: 10px;
+}
+
+.form-button:hover {
+    background-color: #7d5bbe;
+    color: white;
+    transition: 0.4s;
 }

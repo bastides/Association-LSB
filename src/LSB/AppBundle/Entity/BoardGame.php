@@ -3,6 +3,7 @@
 namespace LSB\AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * BoardGame
@@ -25,6 +26,13 @@ class BoardGame
      * @var string
      *
      * @ORM\Column(name="name", type="string")
+     * @Assert\NotBlank()
+     * @Assert\Length(
+     *      min = 1,
+     *      max = 100,
+     *      minMessage = "Vous devez rentrer au moins {{ limit }} caractère",
+     *      maxMessage = "Vous ne pouvez pas rentrer plus de {{ limit }} caractères"
+     * )
      */
     private $name;
 
@@ -32,6 +40,17 @@ class BoardGame
      * @var int
      *
      * @ORM\Column(name="players", type="integer")
+     * @Assert\NotBlank()
+     * @Assert\Range(
+     *      min = 1,
+     *      max = 50,
+     *      minMessage = "Vous devez rentrer au moins {{ limit }} joueur",
+     *      maxMessage = "Vous ne pouvez pas rentrer plus de {{ limit }} joueurs"
+     * )
+     * @Assert\Type(
+     *     type="integer",
+     *     message="Le nombre de joueurs doit être un chiffre."
+     * )
      */
     private $players;
 

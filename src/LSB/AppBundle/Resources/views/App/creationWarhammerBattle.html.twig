@@ -5,11 +5,55 @@
 {% block stylesheets %} {{ parent() }} {% endblock %}
 
 {% block body %}
-    <h1>WarhammerBattle</h1>
+    <div class="container" id="warhammerBattle-page">
 
-    {{ form_start(formBattle) }}
+        <div class="return-button">
+            <a class="management-game-button" href="{{ path('lsb_app_lobby', {'timestamp': timestamp}) }}">Retour à la liste des parties</a>
+        </div>
 
-    {{ form_end(formBattle) }}
+        <div class="row">
+            <div class="text-center col-sm-offset-1 col-sm-10 hr-bottom">
+                <h1 class="creation-game-title">CRÉER UNE PARTIE WARHAMMER BATTLE</h1>
+            </div>
+        </div>
+
+        <div id="formBattle">
+            {{ form_start(formBattle) }}
+            {{ form_errors(formBattle) }}
+            <div class="col-sm-offset-3 col-sm-6 col-md-offset-4 col-md-4">
+                <div class="row form-group">
+                    {{ form_label(formBattle.name, "Nom de la partie :", {'label_attr': {'class': 'control-label'}}) }}
+                    {{ form_widget(formBattle.name, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_errors(formBattle.name) }}
+                </div>
+                <div class="row form-group">
+                    {{ form_label(formBattle.players, "Nombre de joueurs :", {'label_attr': {'class': 'control-label'}}) }}
+                    {{ form_widget(formBattle.players, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_errors(formBattle.players) }}
+                </div>
+                <div class="row form-group">
+                    {{ form_label(formBattle.style, "Type de jeu :", {'label_attr': {'class': 'control-label'}}) }}
+                    {{ form_widget(formBattle.style, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_errors(formBattle.style) }}
+                </div>
+                <div class="row form-group">
+                    {{ form_label(formBattle.mode, "Points d'armée :", {'label_attr': {'class': 'control-label'}}) }}
+                    {{ form_widget(formBattle.mode, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_errors(formBattle.mode) }}
+                </div>
+                <div class="row form-group">
+                    {{ form_label(formBattle.armyPoints, "Points d'armée :", {'label_attr': {'class': 'control-label'}}) }}
+                    {{ form_widget(formBattle.armyPoints, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_errors(formBattle.armyPoints) }}
+                </div>
+                <div class="row">
+                    {{ form_widget(formBattle.Valider, {'attr': {'class': 'form-button pull-right'}}) }}
+                </div>
+            </div>
+            {{ form_rest(formBattle) }}
+            {{ form_end(formBattle) }}
+        </div>
+    </div>
 {% endblock %}
 
 {% block javascripts %} {{ parent() }} {% endblock %}

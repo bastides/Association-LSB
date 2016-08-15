@@ -5,11 +5,56 @@
 {% block stylesheets %} {{ parent() }} {% endblock %}
 
 {% block body %}
-    <h1>Warhammer40K</h1>
+    <div class="container" id="warhammer40k-page">
 
-    {{ form_start(formW40k) }}
+        <div class="return-button">
+            <a class="management-game-button" href="{{ path('lsb_app_lobby', {'timestamp': timestamp}) }}">Retour à la liste des parties</a>
+        </div>
 
-    {{ form_end(formW40k) }}
+        <div class="row">
+            <div class="text-center col-sm-offset-1 col-sm-10 hr-bottom">
+                <h1 class="creation-game-title">CRÉER UNE PARTIE WARHAMMER 40K</h1>
+            </div>
+        </div>
+
+        <div id="form40k">
+            {{ form_start(formW40k) }}
+            {{ form_errors(formW40k) }}
+            <div class="col-sm-offset-3 col-sm-6 col-md-offset-4 col-md-4">
+                <div class="row form-group">
+                    {{ form_label(formW40k.name, "Nom de la partie :", {'label_attr': {'class': 'control-label'}}) }}
+                    {{ form_widget(formW40k.name, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_errors(formW40k.name) }}
+                </div>
+                <div class="row form-group">
+                    {{ form_label(formW40k.players, "Nombre de joueurs :", {'label_attr': {'class': 'control-label'}}) }}
+                    {{ form_widget(formW40k.players, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_errors(formW40k.players) }}
+                </div>
+                <div class="row form-group">
+                    {{ form_label(formW40k.style, "Type de jeu :", {'label_attr': {'class': 'control-label'}}) }}
+                    {{ form_widget(formW40k.style, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_errors(formW40k.style) }}
+                </div>
+                <div class="row form-group">
+                    {{ form_label(formW40k.armyPoints, "Points d'armée :", {'label_attr': {'class': 'control-label'}}) }}
+                    {{ form_widget(formW40k.armyPoints, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_errors(formW40k.armyPoints) }}
+                </div>
+                <div class="row form-group">
+                    {{ form_label(formW40k.cpmPoints, "Points CPM :", {'label_attr': {'class': 'control-label'}}) }}
+                    {{ form_widget(formW40k.cpmPoints, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_errors(formW40k.cpmPoints) }}
+                </div>
+                <div class="row">
+                    {{ form_widget(formW40k.Valider, {'attr': {'class': 'form-button pull-right'}}) }}
+                </div>
+            </div>
+            {{ form_rest(formW40k) }}
+            {{ form_end(formW40k) }}
+        </div>
+
+    </div>
 {% endblock %}
 
 {% block javascripts %} {{ parent() }} {% endblock %}

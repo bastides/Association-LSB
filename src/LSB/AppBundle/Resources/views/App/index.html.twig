@@ -5,24 +5,23 @@
 {% block stylesheets %} {{ parent() }} {% endblock %}
 
 {% block body %}
-    <h1>HOME PAGE</h1>
+    <div class="container-fluid" id="home-page">
+        <h1>HOME PAGE</h1>
 
-    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-        <a href="{{ path('fos_user_security_logout') }}">Déconnexion</a>
-    {% else %}
-        <a href="{{ path('fos_user_registration_register') }}">Inscription</a>
-        <a href="{{ path('fos_user_security_login') }}">Connexion</a>
-    {% endif %}
-
-
-    <ul>
-        {% for date in dates %}
-            <li><a href="{{ path('lsb_app_lobby', {'timestamp': date.timestamp}) }}">{{ fr(date.timestamp) }}</a></li>
-        {% endfor %}
-    </ul>
+        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+            <a href="{{ path('fos_user_security_logout') }}">Déconnexion</a>
+        {% else %}
+            <a href="{{ path('fos_user_registration_register') }}">Inscription</a>
+            <a href="{{ path('fos_user_security_login') }}">Connexion</a>
+        {% endif %}
 
 
-
+        <ul>
+            {% for date in dates %}
+                <li><a href="{{ path('lsb_app_lobby', {'timestamp': date.timestamp}) }}">{{ fr(date.timestamp) }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
 {% endblock %}
 
 {% block javascripts %} {{ parent() }} {% endblock %}
