@@ -43,7 +43,7 @@ class AppController extends Controller
         }
 
         // GET AND SORTING DATES
-        $homeDates = $em->getRepository('LSBAppBundle:MeetingDate')->findBy(array(), array('id' => 'desc'),9,0);
+        $homeDates = $em->getRepository('LSBAppBundle:MeetingDate')->findBy(array(), array('id' => 'desc'),5,0);
         $sortedDates = array();
         $j = 0;
 
@@ -155,5 +155,10 @@ class AppController extends Controller
             'timestamp' => $timestamp,
             'formBG' => $formBG->createView()
         ));
+    }
+
+    public function legalNoticeAction()
+    {
+        return $this->render('LSBAppBundle:App:legalNotice.html.twig');
     }
 }

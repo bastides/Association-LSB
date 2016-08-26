@@ -89,6 +89,10 @@ lsb_app_delete_boardgame:
         timestamp:  \d+
         id:         \d+
 
+lsb_app_legal_notice:
+    path: /mentions-legales
+    defaults: { _controller: LSBAppBundle:App:legalNotice }
+
 lsb_app_adminpage:
     path:     /admin
     defaults: { _controller: LSBAppBundle:Admin:index }

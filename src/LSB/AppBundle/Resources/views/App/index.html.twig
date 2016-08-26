@@ -5,22 +5,79 @@
 {% block stylesheets %} {{ parent() }} {% endblock %}
 
 {% block body %}
+
+    <div class="container" id="connexion-bar">
+        <div class="row text-right">
+            <a class="connexion-button margin-connexion-button" href="">FORUM</a>
+            {% if is_granted("ROLE_ADMIN") %}
+                <a class="connexion-button" href="">CRÉER UN TOURNOI</a>
+                <a class="connexion-button margin-connexion-button" href="{{ path('lsb_app_user_management') }}">ADMIN</a>
+            {% endif %}
+            {% if is_granted("IS_AUTHENTICATED_REMEMBERED")  %}
+                <a class="connexion-button" href="{{ path('fos_user_security_logout') }}">SE DÉCONNECTER</a>
+            {% else %}
+                <a class="connexion-button" href="{{ path('fos_user_security_login') }}">SE CONNECTER</a>
+                <a class="connexion-button" href="{{ path('fos_user_registration_register') }}">S'INSCRIRE</a>
+            {% endif %}
+        </div>
+    </div>
+
+    <div id="banner">
+        <div class="text-center">
+            <h1 id="banner-title">LES SEIGNEURS BOURBONNAIS</h1>
+        </div>
+    </div>
+
     <div class="container-fluid" id="home-page">
-        <h1>HOME PAGE</h1>
+        <div id="content-home-page" class="text-justify col-sm-offset-2 col-sm-8">
 
-        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-            <a href="{{ path('fos_user_security_logout') }}">Déconnexion</a>
-        {% else %}
-            <a href="{{ path('fos_user_registration_register') }}">Inscription</a>
-            <a href="{{ path('fos_user_security_login') }}">Connexion</a>
-        {% endif %}
+            {% if is_granted("ROLE_MEMBER") or is_granted("ROLE_ADMIN") or is_granted("ROLE_SUPER_ADMIN") %}
+                <div id="list-dates">
+                    {% for date in dates %}
+                        <div class="date text-center">
+                            <a class="skin-date" href="{{ path('lsb_app_lobby', {'timestamp': date.timestamp}) }}">{{ fr(date.timestamp) }}</a>
+                        </div>
+                    {% endfor %}
+                </div>
 
+            {% else %}
+                <h1>Fieri, inquam, Triari, nullo pacto potest, ut non dicas</h1><br /><br />
+                <p>
+                    Eodem tempore Serenianus ex duce, cuius ignavia populatam in Phoenice Celsen ante rettulimus, pulsatae
+                    maiestatis imperii reus iure postulatus ac lege, incertum qua potuit suffragatione absolvi, aperte convictus
+                    familiarem suum cum pileo, quo caput operiebat, incantato vetitis artibus ad templum misisse fatidicum,
+                    quaeritatum expresse an ei firmum portenderetur imperium, ut cupiebat, et cunctum.
+                </p>
+                <p>
+                    Denique Antiochensis ordinis vertices sub uno elogio iussit occidi ideo efferatus, quod ei celebrari
+                    vilitatem intempestivam urgenti, cum inpenderet inopia, gravius rationabili responderunt; et perissent ad
+                    unum ni comes orientis tunc Honoratus fixa constantia restitisset.
+                </p>
+                <p>
+                    Fieri, inquam, Triari, nullo pacto potest, ut non dicas, quid non probes eius, a quo dissentias. quid enim
+                    me prohiberet Epicureum esse, si probarem, quae ille diceret? cum praesertim illa perdiscere ludus esset.
+                    Quam ob rem dissentientium inter se reprehensiones non sunt vituperandae, maledicta, contumeliae, tum iracundiae,
+                    contentiones concertationesque in disputando pertinaces indignae philosophia mihi videri solent.
+                </p>
+                <p>
+                    Siquis enim militarium vel honoratorum aut nobilis inter suos rumore tenus esset insimulatus fovisse partes
+                    hostiles, iniecto onere catenarum in modum beluae trahebatur et inimico urgente vel nullo, quasi sufficiente
+                    hoc solo, quod nominatus esset aut delatus aut postulatus, capite vel multatione bonorum aut insulari solitudine
+                    damnabatur.
+                </p>
+                <p>
+                    Paphius quin etiam et Cornelius senatores, ambo venenorum artibus pravis se polluisse confessi, eodem
+                    pronuntiante Maximino sunt interfecti. pari sorte etiam procurator monetae extinctus est. Sericum enim et
+                    Asbolium supra dictos, quoniam cum hortaretur passim nominare, quos vellent, adiecta religione firmarat,
+                    nullum igni vel ferro se puniri iussurum, plumbi validis ictibus interemit. et post hoe flammis Campensem
+                    aruspicem dedit, in negotio eius nullo sacramento constrictus.
+                </p>
+            {% endif %}
+        </div>
+    </div>
 
-        <ul>
-            {% for date in dates %}
-                <li><a href="{{ path('lsb_app_lobby', {'timestamp': date.timestamp}) }}">{{ fr(date.timestamp) }}</a></li>
-            {% endfor %}
-        </ul>
+    <div id="footer" class="container-fluid">
+        <p class="text-center">© Copyright 2016 - Les Seigneurs Bourbonnais | <a href="{{ path('lsb_app_legal_notice') }}">Mentions légales</a></p>
     </div>
 {% endblock %}
 

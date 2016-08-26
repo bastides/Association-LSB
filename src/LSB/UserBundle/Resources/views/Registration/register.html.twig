@@ -1,5 +1,13 @@
 {% extends "FOSUserBundle::layout.html.twig" %}
 
 {% block fos_user_content %}
-{% include "FOSUserBundle:Registration:register_content.html.twig" %}
+    <div class="container-fluid">
+        <div class="return-button">
+            <a class="management-game-button" href="{{ path('lsb_app_homepage') }}">Retour à l'accueil</a>
+        </div>
+
+        <div class="fos-user-forms col-md-offset-4 col-md-4">
+            {% include "FOSUserBundle:Registration:register_content.html.twig" %}
+        </div>
+    </div>
 {% endblock fos_user_content %}
