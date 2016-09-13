@@ -13,7 +13,7 @@ body {
     text-decoration: none;
 }
 
-#home-page, #lobby-page, #warhammer40k-page, #warhammerBattle-page, #boardGame-page, #legalNotice-page, #adminHome-page, #userManagement-page {
+#home-page,#tournament-page, #lobby-page, #warhammer40k-page, #warhammerBattle-page, #boardGame-page, #legalNotice-page, #adminHome-page, #userManagement-page {
     background-color: white;
     min-height: 500px;
 }
@@ -118,6 +118,33 @@ body {
     padding-bottom: 40px;
 }
 
+#home-tournament-title h2 {
+    font-weight: 900;
+}
+
+.tournament-item-title {
+    font-size: 18px;
+    margin-bottom: 0;
+    color: #6441a4;
+}
+
+.tournament-item-place {
+    font-size: 13px;
+    margin-bottom: 0;
+}
+
+.tournament-item-info {
+    font-size: 13px;
+    font-weight: 900;
+    color: #AA3333;
+    margin-bottom: 20px;
+}
+
+#home-tournament-date h2 {
+    font-weight: 900;
+    padding-top: 50px;
+}
+
 #list-dates {
 
 }
@@ -128,17 +155,30 @@ body {
 }
 
 .date {
-    width: 180px;
-    background-color: #6441a4;
-    padding: 5px 10px;
+    background-color: #2f293f   ;
+    padding: 10px 15px;
+    margin-top: 10px;
     margin-bottom: 10px;
 }
 
 .date:hover {
-    background-color: #7d5bbe;
+    background-color: #237223;
     transition: 0.4s;
 }
 
+
+/* ------------------ TOURNAMENT AREA ------------------ */
+#tournament-title h2 {
+    font-weight: 900;
+}
+
+#formT {
+    margin: 40px 0;
+}
+
+#tournament_tournamentDate_time {
+    margin-top: 15px;
+}
 
 /* ------------------ LOBBY AREA ------------------ */
 
@@ -197,7 +237,7 @@ body {
     border-bottom: 1px solid #d0d0d0;
 }
 
-.management-game-button {
+.management-game-button, .management-game-button-join, .management-game-button-delete {
     font-weight: 400;
     background-color: #6441a4;
     color: white;
@@ -207,6 +247,20 @@ body {
 
 .management-game-button:hover {
     background-color: #7d5bbe;
+    color: white;
+    text-decoration: none;
+    transition: 0.4s;
+}
+
+.management-game-button-join:hover {
+    background-color: #237223;
+    color: white;
+    text-decoration: none;
+    transition: 0.4s;
+}
+
+.management-game-button-delete:hover {
+    background-color: #a94444;
     color: white;
     text-decoration: none;
     transition: 0.4s;

@@ -2,6 +2,10 @@ lsb_app_homepage:
     path:     /
     defaults: { _controller: LSBAppBundle:App:index }
 
+lsb_app_tournament:
+    path:     /tournoi
+    defaults: { _controller: LSBAppBundle:App:tournament }
+
 lsb_app_lobby:
     path:     /salon/{timestamp}
     defaults: { _controller: LSBAppBundle:App:lobby }

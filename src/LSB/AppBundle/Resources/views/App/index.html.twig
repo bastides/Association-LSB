@@ -10,7 +10,7 @@
         <div class="row text-right">
             <a class="connexion-button margin-connexion-button" href="">FORUM</a>
             {% if is_granted("ROLE_ADMIN") %}
-                <a class="connexion-button" href="">CRÉER UN TOURNOI</a>
+                <a class="connexion-button" href="{{ path('lsb_app_tournament') }}">CRÉER UN TOURNOI</a>
                 <a class="connexion-button margin-connexion-button" href="{{ path('lsb_app_user_management') }}">ADMIN</a>
             {% endif %}
             {% if is_granted("IS_AUTHENTICATED_REMEMBERED")  %}
@@ -32,10 +32,26 @@
         <div id="content-home-page" class="text-justify col-sm-offset-2 col-sm-8">
 
             {% if is_granted("ROLE_MEMBER") or is_granted("ROLE_ADMIN") or is_granted("ROLE_SUPER_ADMIN") %}
+                <div id="Tournament-area">
+                    <div id="home-tournament-title" class="row text-center">
+                        <h2 class="col-sm-offset-1 col-sm-10 hr-bottom">PROCHAIN TOURNOI</h2>
+                    </div>
+                    <div id="home-tournaments" class="row text-center">
+                        {% for tournament in tournaments %}
+                            <p class="tournament-item-title">{{ tournament.name }} | {{ fr(tournament.tournamentDate.timestamp) }} {{ tournament.tournamentDate|date("H:i") }}</p>
+                            <p class="tournament-item-place">{{ tournament.place }}</p>
+                            <p class="tournament-item-info">{{ tournament.moreInformation }}</p>
+                        {% endfor %}
+                    </div>
+                </div>
+
                 <div id="list-dates">
+                    <div id="home-tournament-date" class="row text-center">
+                        <h2 class="col-sm-offset-1 col-sm-10 hr-bottom">PROCHAINES RÉUNIONS</h2>
+                    </div>
                     {% for date in dates %}
-                        <div class="date text-center">
-                            <a class="skin-date" href="{{ path('lsb_app_lobby', {'timestamp': date.timestamp}) }}">{{ fr(date.timestamp) }}</a>
+                        <div class="date col-sm-offset-3 col-sm-6 col-md-offset-4 col-md-4 text-center">
+                            <a href="{{ path('lsb_app_lobby', {'timestamp': date.timestamp}) }}">{{ fr(date.timestamp) }}</a>
                         </div>
                     {% endfor %}
                 </div>

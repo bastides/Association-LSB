@@ -1,0 +1,211 @@
+<?php
+
+namespace LSB\AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
+/**
+ * Tournament
+ *
+ * @ORM\Table(name="tournament")
+ * @ORM\Entity(repositoryClass="LSB\AppBundle\Repository\TournamentRepository")
+ */
+class Tournament
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=255)
+     * @Assert\NotBlank()
+     * @Assert\Length(
+     *      min = 1,
+     *      max = 250,
+     *      minMessage = "Vous devez rentrer au moins {{ limit }} caractère",
+     *      maxMessage = "Vous ne pouvez pas rentrer plus de {{ limit }} caractères"
+     * )
+     */
+    private $name;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="place", type="string", length=255)
+     * @Assert\NotBlank()
+     * @Assert\Length(
+     *      min = 1,
+     *      max = 250,
+     *      minMessage = "Vous devez rentrer au moins {{ limit }} caractère",
+     *      maxMessage = "Vous ne pouvez pas rentrer plus de {{ limit }} caractères"
+     * )
+     */
+    private $place;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="tournament_date", type="datetime")
+     */
+    private $tournamentDate;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="more_information", type="text", nullable=true)
+     * @Assert\NotBlank()
+     * @Assert\Length(
+     *      min = 1,
+     *      max = 2000,
+     *      minMessage = "Vous devez rentrer au moins {{ limit }} caractère",
+     *      maxMessage = "Vous ne pouvez pas rentrer plus de {{ limit }} caractères"
+     * )
+     */
+    private $moreInformation;
+
+    /**
+     * @ORM\OneToOne(targetEntity="LSB\UserBundle\Entity\User", cascade={"persist"})
+     */
+    private $creator;
+
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     *
+     * @return Tournament
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set place
+     *
+     * @param string $place
+     *
+     * @return Tournament
+     */
+    public function setPlace($place)
+    {
+        $this->place = $place;
+
+        return $this;
+    }
+
+    /**
+     * Get place
+     *
+     * @return string
+     */
+    public function getPlace()
+    {
+        return $this->place;
+    }
+
+    /**
+     * Set tournamentDate
+     *
+     * @param \DateTime $tournamentDate
+     *
+     * @return Tournament
+     */
+    public function setTournamentDate($tournamentDate)
+    {
+        $this->tournamentDate = $tournamentDate;
+
+        return $this;
+    }
+
+    /**
+     * Get tournamentDate
+     *
+     * @return \DateTime
+     */
+    public function getTournamentDate()
+    {
+        return $this->tournamentDate;
+    }
+
+    /**
+     * Set moreInformation
+     *
+     * @param string $moreInformation
+     *
+     * @return Tournament
+     */
+    public function setMoreInformation($moreInformation)
+    {
+        $this->moreInformation = $moreInformation;
+
+        return $this;
+    }
+
+    /**
+     * Get moreInformation
+     *
+     * @return string
+     */
+    public function getMoreInformation()
+    {
+        return $this->moreInformation;
+    }
+
+
+
+    /**
+     * Set creator
+     *
+     * @param \LSB\UserBundle\Entity\User $creator
+     *
+     * @return Tournament
+     */
+    public function setCreator(\LSB\UserBundle\Entity\User $creator = null)
+    {
+        $this->creator = $creator;
+
+        return $this;
+    }
+
+    /**
+     * Get creator
+     *
+     * @return \LSB\UserBundle\Entity\User
+     */
+    public function getCreator()
+    {
+        return $this->creator;
+    }
+}

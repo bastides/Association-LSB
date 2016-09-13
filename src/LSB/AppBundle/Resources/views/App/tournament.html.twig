@@ -1,0 +1,54 @@
+{% extends "LSBAppBundle::layout.html.twig" %}
+
+{% block title %} {{ parent() }} {% endblock %}
+
+{% block stylesheets %} {{ parent() }} {% endblock %}
+
+{% block body %}
+    <div class="container" id="tournament-page">
+
+        <div class="return-button">
+            <a class="management-game-button" href="{{ path('lsb_app_homepage') }}">Retour à l'accueil</a>
+        </div>
+
+        <div class="row" id="tournament-title">
+            <div class="text-center col-sm-offset-1 col-sm-10 hr-bottom">
+                <i class="fa fa-shield fa-2x align-shield shield-icon-left" aria-hidden="true"></i><h2 class="align-shield">CRÉER UN TOURNOI</h2><i class="fa fa-shield fa-2x align-shield shield-icon-right" aria-hidden="true"></i>
+            </div>
+        </div>
+
+        <div class="row" id="formT">
+            {{ form_start(formT) }}
+            {{ form_errors(formT) }}
+            <div class="col-sm-offset-3 col-sm-6 col-md-offset-4 col-md-4">
+                <div class="row form-group">
+                    {{ form_label(formT.name, "Nom du tournoi :", {'label_attr': {'class': 'control-label'}}) }}
+                    {{ form_widget(formT.name, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_errors(formT.name) }}
+                </div>
+                <div class="row form-group">
+                    {{ form_label(formT.place, "Lieu du tournoi :", {'label_attr': {'class': 'control-label'}}) }}
+                    {{ form_widget(formT.place, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_errors(formT.place) }}
+                </div>
+                <div class="row form-group">
+                    {{ form_label(formT.tournamentDate, "Date du tournoi :", {'label_attr': {'class': 'control-label'}}) }}
+                    {{ form_widget(formT.tournamentDate, {'attr': {'class': ''}}) }}
+                    {{ form_errors(formT.tournamentDate) }}
+                </div>
+                <div class="row form-group">
+                    {{ form_label(formT.moreInformation, "Modalités du tournoi :", {'label_attr': {'class': 'control-label'}}) }}
+                    {{ form_widget(formT.moreInformation, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_errors(formT.moreInformation) }}
+                </div>
+                <div class="row">
+                    {{ form_widget(formT.Valider, {'attr': {'class': 'form-button pull-right'}}) }}
+                </div>
+            </div>
+            {{ form_rest(formT) }}
+            {{ form_end(formT) }}
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %} {{ parent() }} {% endblock %}

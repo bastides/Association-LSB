@@ -3,9 +3,11 @@
 namespace LSB\AppBundle\Controller;
 
 use LSB\AppBundle\Entity\BoardGame;
+use LSB\AppBundle\Entity\Tournament;
 use LSB\AppBundle\Entity\Warhammer40k;
 use LSB\AppBundle\Entity\WarhammerBattle;
 use LSB\AppBundle\Form\BoardGameType;
+use LSB\AppBundle\Form\TournamentType;
 use LSB\AppBundle\Form\Warhammer40kType;
 use LSB\AppBundle\Form\WarhammerBattleType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -17,8 +19,13 @@ class AppController extends Controller
 {
     public function indexAction()
     {
-        // CREATING AND SAVING DATES
         $em = $this->getDoctrine()->getManager();
+
+        // TOURNAMENT DISPLAY
+        $now = new \DateTime('now');
+        $tournaments = $em->getRepository('LSBAppBundle:Tournament')->findByDate();
+
+        // CREATING AND SAVING DATES
         $lastInsertion = $em->getRepository('LSBAppBundle:MeetingDate')->findBy(array(), array('id' => 'desc'),1,0);
         $lastDate = $lastInsertion[0]->getDate();
 
@@ -53,7 +60,31 @@ class AppController extends Controller
         }
 
         return $this->render('LSBAppBundle:App:index.html.twig', array(
+            'now' =>$now,
+            'tournaments' => $tournaments,
             'dates' => $sortedDates
+        ));
+    }
+
+    public function tournamentAction(Request $request)
+    {
+        $tournament = new Tournament();
+        $formT = $this->createForm(TournamentType::class, $tournament);
+
+        $em = $this->getDoctrine()->getManager();
+        $user = $this->getUser();
+
+        if ($formT->handleRequest($request)->isValid()) {
+
+            $tournament->setCreator($user);
+            $em->persist($tournament);
+            $em->flush();
+
+            return $this->redirectToRoute('lsb_app_homepage');
+        }
+
+        return $this->render('LSBAppBundle:App:tournament.html.twig', array(
+            'formT' => $formT->createView()
         ));
     }
 

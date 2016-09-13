@@ -47,11 +47,11 @@
                             <div class="row padding-game">
                                 <div class="col-sm-12">
                                     {% if  user in warhammer40k.users and user != warhammer40k.creator %}
-                                        <a class="management-game-button pull-right" href="{{ path('lsb_app_leave_warhammer40k', {'timestamp': timestamp, 'id': warhammer40k.id}) }}">Retirer</a>
+                                        <a class="management-game-button-delete pull-right" href="{{ path('lsb_app_leave_warhammer40k', {'timestamp': timestamp, 'id': warhammer40k.id}) }}">Retirer</a>
                                     {% elseif user == warhammer40k.creator %}
-                                        <a class="management-game-button pull-right" href="{{ path('lsb_app_delete_warhammer40k', {'timestamp': timestamp, 'id': warhammer40k.id}) }}">Supprimer le jeu</a>
+                                        <a class="management-game-button-delete pull-right" href="{{ path('lsb_app_delete_warhammer40k', {'timestamp': timestamp, 'id': warhammer40k.id}) }}">Supprimer le jeu</a>
                                     {% else %}
-                                        <a class="management-game-button pull-right" href="{{ path('lsb_app_join_warhammer40k', {'timestamp': timestamp, 'id': warhammer40k.id}) }}">Rejoindre</a>
+                                        <a class="management-game-button-join pull-right" href="{{ path('lsb_app_join_warhammer40k', {'timestamp': timestamp, 'id': warhammer40k.id}) }}">Rejoindre</a>
                                     {% endif %}
                                 </div>
                             </div>
@@ -87,11 +87,11 @@
                             <div class="row padding-game">
                                 <div class="col-sm-12">
                                     {% if  user in warhammerBattle.users and user != warhammerBattle.creator %}
-                                        <a class="management-game-button pull-right" href="{{ path('lsb_app_leave_warhammerbattle', {'timestamp': timestamp, 'id': warhammerBattle.id}) }}">Retirer</a>
+                                        <a class="management-game-button-delete pull-right" href="{{ path('lsb_app_leave_warhammerbattle', {'timestamp': timestamp, 'id': warhammerBattle.id}) }}">Retirer</a>
                                     {% elseif user == warhammerBattle.creator %}
-                                        <a class="management-game-button pull-right" href="{{ path('lsb_app_delete_warhammerbattle', {'timestamp': timestamp, 'id': warhammerBattle.id}) }}">Supprimer le jeu</a>
+                                        <a class="management-game-button-delete pull-right" href="{{ path('lsb_app_delete_warhammerbattle', {'timestamp': timestamp, 'id': warhammerBattle.id}) }}">Supprimer le jeu</a>
                                     {% else %}
-                                        <a class="management-game-button pull-right" href="{{ path('lsb_app_join_warhammerbattle', {'timestamp': timestamp, 'id': warhammerBattle.id}) }}">Rejoindre</a>
+                                        <a class="management-game-button-join pull-right" href="{{ path('lsb_app_join_warhammerbattle', {'timestamp': timestamp, 'id': warhammerBattle.id}) }}">Rejoindre</a>
                                     {% endif %}
                                 </div>
                             </div>
@@ -122,11 +122,11 @@
                             <div class="row padding-game">
                                 <div class="col-sm-12">
                                     {% if  user in boardGame.users and user != boardGame.creator %}
-                                        <a class="management-game-button pull-right" href="{{ path('lsb_app_leave_boardgame', {'timestamp': timestamp, 'id': boardGame.id}) }}">Retirer</a>
+                                        <a class="management-game-button-delete pull-right" href="{{ path('lsb_app_leave_boardgame', {'timestamp': timestamp, 'id': boardGame.id}) }}">Retirer</a>
                                     {% elseif user == boardGame.creator %}
-                                        <a class="management-game-button pull-right" href="{{ path('lsb_app_delete_boardgame', {'timestamp': timestamp, 'id': boardGame.id}) }}">Supprimer le jeu</a>
+                                        <a class="management-game-button-delete pull-right" href="{{ path('lsb_app_delete_boardgame', {'timestamp': timestamp, 'id': boardGame.id}) }}">Supprimer le jeu</a>
                                     {% else %}
-                                        <a class="management-game-button pull-right" href="{{ path('lsb_app_join_boardgame', {'timestamp': timestamp, 'id': boardGame.id}) }}">Rejoindre</a>
+                                        <a class="management-game-button-join pull-right" href="{{ path('lsb_app_join_boardgame', {'timestamp': timestamp, 'id': boardGame.id}) }}">Rejoindre</a>
                                     {% endif %}
                                 </div>
                             </div>
