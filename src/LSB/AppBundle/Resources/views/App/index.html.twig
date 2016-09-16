@@ -8,7 +8,7 @@
 
     <div class="container" id="connexion-bar">
         <div class="row text-right">
-            <a class="connexion-button margin-connexion-button" href="">FORUM</a>
+            <a class="connexion-button margin-connexion-button" href="http://seigneur-bourbonnais.activebb.net">FORUM</a>
             {% if is_granted("ROLE_ADMIN") %}
                 <a class="connexion-button" href="{{ path('lsb_app_tournament') }}">CRÉER UN TOURNOI</a>
                 <a class="connexion-button margin-connexion-button" href="{{ path('lsb_app_user_management') }}">ADMIN</a>
@@ -22,7 +22,7 @@
         </div>
     </div>
 
-    <div id="banner">
+    <div id="banner" class="hidden-xs">
         <div class="text-center">
             <h1 id="banner-title">LES SEIGNEURS BOURBONNAIS</h1>
         </div>

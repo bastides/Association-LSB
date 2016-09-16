@@ -15,7 +15,7 @@ body {
 
 #home-page,#tournament-page, #lobby-page, #warhammer40k-page, #warhammerBattle-page, #boardGame-page, #legalNotice-page, #adminHome-page, #userManagement-page {
     background-color: white;
-    min-height: 500px;
+    min-height: 600px;
 }
 
 /* ------------------ ADMIN AREA ------------------ */
@@ -91,15 +91,48 @@ body {
     background-color: #6441a4;
 }
 
+@media screen and (max-width: 768px)
+{
+    .connexion-button {
+        display: block;
+        text-align: center;
+    }
+
+    .margin-connexion-button {
+        margin-right: 0;
+    }
+}
+
 #banner {
-    background-color: #6441a4;
-    background-image: url("../img/banner.png");
+    background-color: #2f293f;
+    background-image: url("../img/2560x320.jpg");
     width: 100%;
     height: 320px;
     position: relative;
     top: 70px;
     border-bottom: 2px solid #555555;
     border-top: 2px solid #555555;
+}
+
+@media screen and (max-width: 1920px)
+{
+    #banner {
+        background-image: url("../img/1920x320.png");
+    }
+}
+
+@media screen and (max-width: 1366px)
+{
+    #banner {
+        background-image: url("../img/1366x320.jpg");
+    }
+}
+
+@media screen and (max-width: 800px)
+{
+    #banner {
+        background-image: url("../img/800x320.jpg");
+    }
 }
 
 #banner-title {
@@ -267,7 +300,8 @@ body {
 }
 
 #create-game-area {
-    margin-bottom: 40px;
+    margin-top: 50px;
+    margin-bottom: 20px;
 }
 
 .hr-bottom {
@@ -305,6 +339,7 @@ body {
     background-color: white;
     color: #6441a4;
     padding: 10px 20px;
+    margin-bottom: 10px;
     border-radius: 5px;
 }
 

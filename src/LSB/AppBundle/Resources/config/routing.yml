@@ -13,19 +13,19 @@ lsb_app_lobby:
         timestamp: \d+
 
 lsb_app_creation_warhammer40k:
-    path:     /warhammer-40k/{timestamp}
+    path:     /salon/warhammer-40k/{timestamp}
     defaults: { _controller: LSBAppBundle:App:warhammer40kCreation }
     requirements:
         timestamp: \d+
 
 lsb_app_creation_warhammerbattle:
-    path:     /warhammer-battle/{timestamp}
+    path:     /salon/warhammer-battle/{timestamp}
     defaults: { _controller: LSBAppBundle:App:warhammerbattleCreation }
     requirements:
         timestamp: \d+
 
 lsb_app_creation_boardgame:
-    path:     /jeu-de-plateau/{timestamp}
+    path:     /salon/jeu-de-plateau/{timestamp}
     defaults: { _controller: LSBAppBundle:App:boardgameCreation }
     requirements:
         timestamp: \d+
