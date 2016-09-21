@@ -14,27 +14,15 @@ class AdminController extends Controller
 
     public function userManagementAction()
     {
-        $adminList = array();
-        $memberList = array();
-        $visitorList = array();
-
         $userManager = $this->get('fos_user.user_manager');
         $usersList = $userManager->findUsers();
 
-        foreach ($usersList as $user) {
-            if ($user->hasRole('ROLE_ADMIN')) {
-                array_push($adminList, $user);
-            } elseif ($user->hasRole('ROLE_MEMBER')) {
-                array_push($memberList, $user);
-            } elseif ($user->hasRole('ROLE_VISITOR')) {
-                array_push($visitorList, $user);
-            }
-        }
+        $sortedUsers = $this->get('lsb_app.sortusers')->sortUsers($usersList);
 
         return $this->render('LSBAppBundle:Admin:userManagement.html.twig', array(
-            'adminList' => $adminList,
-            'memberList' => $memberList,
-            'visitorList' => $visitorList
+            'adminList' => $sortedUsers[0],
+            'memberList' => $sortedUsers[1],
+            'visitorList' => $sortedUsers[2]
         ));
     }
 

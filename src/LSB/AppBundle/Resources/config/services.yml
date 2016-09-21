@@ -6,3 +6,6 @@ services:
         class: LSB\AppBundle\Twig\DateFrExtension
         tags:
             - { name: twig.extension }
+
+    lsb_app.sortusers:
+        class: LSB\AppBundle\UserManagement\LSBSortUsers
