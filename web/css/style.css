@@ -151,6 +151,14 @@ body {
     padding-bottom: 40px;
 }
 
+#content-home-page h1 {
+    font-weight: 900;
+}
+
+.home-p {
+    margin-bottom: 15px;
+}
+
 #home-tournament-title h2 {
     font-weight: 900;
 }
@@ -381,7 +389,7 @@ body {
 #footer {
     background-color: #17141f;
     color: white;
-    padding-top: 30px;
+    padding-top: 20px;
 }
 
 #footer a {
@@ -395,4 +403,18 @@ body {
 
 #footer p {
     padding-top: 10px;
+}
+
+
+/* ------------------ LEGAL NOTICE ------------------ */
+#legalNotice-page h2 {
+    font-weight: 900;
+}
+
+#legalNotice-page b {
+    color: #7d5bbe;
+}
+
+#legalNotice-page p {
+    margin-bottom: 25px;
 }
