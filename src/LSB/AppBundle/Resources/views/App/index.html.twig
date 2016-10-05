@@ -38,9 +38,14 @@
                     </div>
                     <div id="home-tournaments" class="row text-center">
                         {% for tournament in tournaments %}
-                            <p class="tournament-item-title">{{ tournament.name }} | {{ fr(tournament.tournamentDate.timestamp) }} {{ tournament.tournamentDate|date("H:i") }}</p>
-                            <p class="tournament-item-place">{{ tournament.place }}</p>
-                            <p class="tournament-item-info">{{ tournament.moreInformation }}</p>
+                            <div id="tournament">
+                                <p class="tournament-item-title">{{ tournament.name }} | {{ fr(tournament.tournamentDate.timestamp) }} {{ tournament.tournamentDate|date("H:i") }}</p>
+                                <p class="tournament-item-place">{{ tournament.place }}</p>
+                                <p class="tournament-item-info">{{ tournament.moreInformation }}</p>
+                                {% if is_granted("ROLE_ADMIN") or is_granted("ROLE_SUPER_ADMIN") %}
+                                    <a class="management-game-button-delete" href="{{ path('lsb_app_delete_tournament', {'id': tournament.id}) }}">Supprimer le tournoi</a>
+                                {% endif %}
+                            </div>
                         {% endfor %}
                     </div>
                 </div>
@@ -57,7 +62,7 @@
                 </div>
 
             {% else %}
-                <h1 class="text-center hr-bottom">Présentation de l'association</h1><br /><br />
+                <h2 class="text-center hr-bottom">Présentation de l'association</h2><br /><br />
                 <p class="home-p">
                     Les Seigneurs Bourbonnais est une association créée en 2003 qui regroupe des fans de Warhammer mais pas que.
                     Nous sommes joueurs avant tout ! Nous pratiquons les jeux suivants: Warhammer Battle, Warhammer 40K,

@@ -60,7 +60,7 @@ class AppController extends Controller
         }
 
         return $this->render('LSBAppBundle:App:index.html.twig', array(
-            'now' =>$now,
+            'now' => $now,
             'tournaments' => $tournaments,
             'dates' => $sortedDates
         ));
@@ -75,7 +75,6 @@ class AppController extends Controller
         $user = $this->getUser();
 
         if ($formT->handleRequest($request)->isValid()) {
-
             $tournament->setCreator($user);
             $em->persist($tournament);
             $em->flush();

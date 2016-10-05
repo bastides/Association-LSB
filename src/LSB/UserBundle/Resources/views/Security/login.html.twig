@@ -3,9 +3,6 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
 {% block fos_user_content %}
-{% if error %}
-    <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-{% endif %}
     <div class="container-fluid">
         <div class="return-button">
             <a class="management-game-button" href="{{ path('lsb_app_homepage') }}">Retour à l'accueil</a>
@@ -32,6 +29,13 @@
 
                 <input type="submit" id="_submit" class="form-button pull-right" name="_submit" value="{{ 'security.login.submit'|trans }}" />
             </form>
+        </div>
+        <div id="error-form-login" class="col-sm-offset-4 col-sm-4 col-md-offset-5 col-md-2">
+            <div class="row">
+                {% if error %}
+                    <div class="alert alert-danger text-center">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                {% endif %}
+            </div>
         </div>
     </div>
 {% endblock fos_user_content %}

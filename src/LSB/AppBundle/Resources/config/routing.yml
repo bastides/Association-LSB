@@ -6,6 +6,12 @@ lsb_app_tournament:
     path:     /tournoi
     defaults: { _controller: LSBAppBundle:App:tournament }
 
+lsb_app_delete_tournament:
+    path:     /delete-tournament{id}
+    defaults: { _controller: LSBAppBundle:ManagementTournament:deleteTournament }
+    requirements:
+        id:   \d+
+
 lsb_app_lobby:
     path:     /salon/{timestamp}
     defaults: { _controller: LSBAppBundle:App:lobby }
