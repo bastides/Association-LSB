@@ -32,9 +32,10 @@
         <div id="content-home-page" class="text-justify col-sm-offset-2 col-sm-8">
 
             {% if is_granted("ROLE_MEMBER") or is_granted("ROLE_ADMIN") or is_granted("ROLE_SUPER_ADMIN") %}
+                {% if tournaments %}
                 <div id="Tournament-area">
                     <div id="home-tournament-title" class="row text-center">
-                        <h2 class="col-sm-offset-1 col-sm-10 hr-bottom">PROCHAIN TOURNOI</h2>
+                        <h2 class="col-sm-offset-1 col-sm-10 hr-bottom">PROCHAINS TOURNOIS</h2>
                     </div>
                     <div id="home-tournaments" class="row text-center">
                         {% for tournament in tournaments %}
@@ -49,6 +50,7 @@
                         {% endfor %}
                     </div>
                 </div>
+                {% endif %}
 
                 <div id="list-dates">
                     <div id="home-tournament-date" class="row text-center">

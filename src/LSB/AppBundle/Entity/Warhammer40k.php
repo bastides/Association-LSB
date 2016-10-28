@@ -92,12 +92,12 @@ class Warhammer40k
     private $meetingDate;
 
     /**
-     * @ORM\ManyToMany(targetEntity="LSB\UserBundle\Entity\User", cascade={"persist"})
+     * @ORM\ManyToMany(targetEntity="LSB\AppBundle\Entity\User", cascade={"persist"})
      */
     private $users;
 
     /**
-     * @ORM\OneToOne(targetEntity="LSB\UserBundle\Entity\User", cascade={"persist"})
+     * @ORM\OneToOne(targetEntity="LSB\AppBundle\Entity\User", cascade={"persist"})
      */
     private $creator;
 
@@ -241,11 +241,11 @@ class Warhammer40k
     /**
      * Add user
      *
-     * @param \LSB\UserBundle\Entity\User $user
+     * @param \LSB\AppBundle\Entity\User $user
      *
      * @return Warhammer40k
      */
-    public function addUser(\LSB\UserBundle\Entity\User $user)
+    public function addUser(\LSB\AppBundle\Entity\User $user)
     {
         $this->users[] = $user;
 
@@ -255,9 +255,9 @@ class Warhammer40k
     /**
      * Remove user
      *
-     * @param \LSB\UserBundle\Entity\User $user
+     * @param \LSB\AppBundle\Entity\User $user
      */
-    public function removeUser(\LSB\UserBundle\Entity\User $user)
+    public function removeUser(\LSB\AppBundle\Entity\User $user)
     {
         $this->users->removeElement($user);
     }
@@ -299,11 +299,11 @@ class Warhammer40k
     /**
      * Set creator
      *
-     * @param \LSB\UserBundle\Entity\User $creator
+     * @param \LSB\AppBundle\Entity\User $creator
      *
      * @return Warhammer40k
      */
-    public function setCreator(\LSB\UserBundle\Entity\User $creator = null)
+    public function setCreator(\LSB\AppBundle\Entity\User $creator = null)
     {
         $this->creator = $creator;
 
@@ -313,7 +313,7 @@ class Warhammer40k
     /**
      * Get creator
      *
-     * @return \LSB\UserBundle\Entity\User
+     * @return \LSB\AppBundle\Entity\User
      */
     public function getCreator()
     {

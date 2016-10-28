@@ -72,7 +72,7 @@ class Tournament
     private $moreInformation;
 
     /**
-     * @ORM\OneToOne(targetEntity="LSB\UserBundle\Entity\User", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="LSB\AppBundle\Entity\User", cascade={"persist"})
      */
     private $creator;
 
@@ -188,11 +188,11 @@ class Tournament
     /**
      * Set creator
      *
-     * @param \LSB\UserBundle\Entity\User $creator
+     * @param \LSB\AppBundle\Entity\User $creator
      *
      * @return Tournament
      */
-    public function setCreator(\LSB\UserBundle\Entity\User $creator = null)
+    public function setCreator(\LSB\AppBundle\Entity\User $creator = null)
     {
         $this->creator = $creator;
 
@@ -202,7 +202,7 @@ class Tournament
     /**
      * Get creator
      *
-     * @return \LSB\UserBundle\Entity\User
+     * @return \LSB\AppBundle\Entity\User
      */
     public function getCreator()
     {

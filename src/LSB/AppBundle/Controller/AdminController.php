@@ -3,7 +3,7 @@
 namespace LSB\AppBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use LSB\UserBundle\Entity\User;
+use LSB\AppBundle\Entity\User;
 
 class AdminController extends Controller
 {
